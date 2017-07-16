@@ -196,11 +196,14 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\HeroesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\FilesHelper.cs" />
+    <Compile Include="Helpers\StringsHelper.cs" />
     <Compile Include="Migrations\201707130602220_StartMigration.cs" />
     <Compile Include="Migrations\201707130602220_StartMigration.Designer.cs">
       <DependentUpon>201707130602220_StartMigration.cs</DependentUpon>
@@ -275,9 +278,15 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Heroes\Create.cshtml" />
+    <Content Include="Views\Heroes\Delete.cshtml" />
+    <Content Include="Views\Heroes\Details.cshtml" />
+    <Content Include="Views\Heroes\Edit.cshtml" />
+    <Content Include="Views\Heroes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="NewFolder1\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

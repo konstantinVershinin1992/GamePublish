@@ -10,10 +10,13 @@ namespace Game.Models
     {
         public int Id { get; set; }
         [Required]
+        [Display(Name="Имя героя")]
         public string Name { get; set; }
+        [Display(Name = "Уровень")]
         public int Level { get; set; }
         public int FreePoints { get; set; }
         public int Experience { get; set; }
+        [Display (Name = "Здоровье")]
         public int Health { get; set; }
         public int Protection { get; set; }
         public int Attack { get; set; }
