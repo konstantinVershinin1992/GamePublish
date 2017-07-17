@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using Game.Models;
 using Microsoft.AspNet.Identity;
+using System.Web.Hosting;
 
 namespace Game.Controllers
 {
@@ -56,10 +57,11 @@ namespace Game.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Level,FreePoints,Experience,Health,Protection,Attack,Evasion,Crit,Picture,UserId")] Hero hero)
+        public ActionResult Create([Bind(Include = "Id,Name,Level,FreePoints,Experience,Health,Protection,Attack,Evasion,Crit,Picture,UserId")] Hero hero, HttpPostedFileBase file)
         {
             if (ModelState.IsValid)
             {
+                
                 db.Heroes.Add(hero);
                 db.SaveChanges();
                 return RedirectToAction("Index");
