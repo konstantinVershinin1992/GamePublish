@@ -7,19 +7,26 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Game.Models;
+using Microsoft.AspNet.Identity;
 
 namespace Game.Controllers
 {
+ 
+ //var current = System.Security.Principal.WindowsIdentity.GetCurrent();// текущий пользователь системы
+ 
     public class HeroesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-
-        // GET: Heroes
         public ActionResult Index()
         {
-            var heroes = db.Heroes.Include(h => h.User);
-            
-            return View(heroes.ToList());
+           // var current = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
+            bool isAuthenticated = User.Identity.IsAuthenticated;
+            if (isAuthenticated)
+            {
+                var heroes = db.Heroes.Include(h => h.User);              
+                return View(heroes.ToList());
+            }            
+            return View("NotUsersView");
         }
 
         // GET: Heroes/Details/5

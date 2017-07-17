@@ -283,10 +283,10 @@
     <Content Include="Views\Heroes\Details.cshtml" />
     <Content Include="Views\Heroes\Edit.cshtml" />
     <Content Include="Views\Heroes\Index.cshtml" />
+    <Content Include="Views\Heroes\NotUsersView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="NewFolder1\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

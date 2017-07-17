@@ -18,6 +18,7 @@ namespace Game.Models
         public int Experience { get; set; }
         [Display (Name = "Здоровье")]
         public int Health { get; set; }
+        [Display(Name = "Защита")]
         public int Protection { get; set; }
         public int Attack { get; set; }
         public int Evasion { get; set; }
