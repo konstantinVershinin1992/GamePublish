@@ -42,7 +42,7 @@ namespace Game.Controllers
             {
                 return HttpNotFound();
             }
-            return View(hero);
+            return PartialView(hero);
         }
 
         // GET: Heroes/Create
@@ -57,6 +57,7 @@ namespace Game.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        
         public ActionResult Create([Bind(Include = "Id,Name,Level,FreePoints,Experience,Health,Protection,Attack,Evasion,Crit,Picture,UserId")] Hero hero, HttpPostedFileBase file)
         {
             if (ModelState.IsValid)
@@ -129,6 +130,28 @@ namespace Game.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+        Dictionary<string, string> lst = new Dictionary<string, string>();
+       // [HttpPost]
+        public ActionResult Test(StrCl s)
+        {
+            
+            lst.Add("1", "sting1");
+            lst.Add("2", "sting2");
+            lst.Add("3", "sting3");
+            //List<ApplicationUser> users = db.Users.ToList
+           /* Hero hero = new Hero();
+            hero.Attack = 5;
+            hero.Crit = 10;
+            hero.Evasion = 40;
+            hero.Experience = 100;
+            hero.FreePoints = 200;
+            hero.Health = 45;
+            hero.Name = "sssssss";
+            hero.UserId = "21167d23-98da-489f-8d91-6db06370cb41";
+            db.Heroes.Add(hero);
+            db.SaveChanges();*/
+            return Json(lst.Where(n=>n.Key == s.St), JsonRequestBehavior.AllowGet);
+        }
 
         protected override void Dispose(bool disposing)
         {
@@ -138,5 +161,10 @@ namespace Game.Controllers
             }
             base.Dispose(disposing);
         }
+    }
+    public class StrCl
+    {
+        public string St { get; set; }
+        public int Lk { get; set; }
     }
 }
