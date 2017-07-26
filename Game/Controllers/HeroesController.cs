@@ -7,8 +7,10 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Game.Models;
+using System.IO;
 using Microsoft.AspNet.Identity;
 using System.Web.Hosting;
+using System.Resources;
 
 namespace Game.Controllers
 {
@@ -62,9 +64,14 @@ namespace Game.Controllers
         {
             if (ModelState.IsValid)
             {
-                
+              //  ResourceManager
+                string fileName = Path.GetFileName(file.FileName);
+                string fullpath = Directory.GetCurrentDirectory()+ "~/UploadContent/" + fileName;
+                file.SaveAs(Server.MapPath(fullpath));// Server.
+                hero.Picture = fullpath;
                 db.Heroes.Add(hero);
                 db.SaveChanges();
+                var z= Server.MachineName;
                 return RedirectToAction("Index");
             }
 

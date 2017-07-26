@@ -23,8 +23,9 @@ namespace Game.Models
         public int Attack { get; set; }
         public int Evasion { get; set; }
         public int Crit { get; set; }
+        [Display(Name = "Аватар")]
         public string Picture { get; set; }
-
+        [Display(Name = "Пользователь")]
         public string UserId { get; set; }
         public virtual ApplicationUser User { get; set; }
     }

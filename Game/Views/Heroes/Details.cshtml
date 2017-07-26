@@ -1,13 +1,10 @@
 ﻿@model Game.Models.Hero
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Сведения";
 }
 
-<h2>Details</h2>
-
 <div>
-    <h4>Hero</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -101,6 +98,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Редактировать", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Назад к списку", "Index")
 </p>
