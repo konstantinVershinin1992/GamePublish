@@ -64,11 +64,20 @@ namespace Game.Controllers
         {
             if (ModelState.IsValid)
             {
-              //  ResourceManager
                 string fileName = Path.GetFileName(file.FileName);
-                string fullpath = Directory.GetCurrentDirectory()+ "~/UploadContent/" + fileName;
-                file.SaveAs(Server.MapPath(fullpath));// Server.
-                hero.Picture = fullpath;
+                string physicalPath= Server.MapPath("/UploadContent");
+                file.SaveAs( Path.Combine(physicalPath,fileName));
+
+                string currentUserId = User.Identity.GetUserId();
+
+                hero.UserId = currentUserId;
+                hero.Picture = Path.Combine("~/UploadContent",fileName);
+                hero.FreePoints = 50;
+                hero.Health = 200;
+                hero.Protection = 5;
+                hero.Attack = 50;
+                hero.Crit = 5;
+
                 db.Heroes.Add(hero);
                 db.SaveChanges();
                 var z= Server.MachineName;
@@ -114,7 +123,7 @@ namespace Game.Controllers
 
         // GET: Heroes/Delete/5
         public ActionResult Delete(int? id)
-        {
+        {                
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -123,6 +132,11 @@ namespace Game.Controllers
             if (hero == null)
             {
                 return HttpNotFound();
+            }
+            string idLoginUser = User.Identity.GetUserId();
+            if (idLoginUser != hero.UserId)
+            {
+                return View("ForbidDelete");
             }
             return View(hero);
         }
@@ -137,14 +151,24 @@ namespace Game.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-        Dictionary<string, string> lst = new Dictionary<string, string>();
-       // [HttpPost]
-        public ActionResult Test(StrCl s)
+        public ActionResult Characteristic(int id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Hero hero = db.Heroes.Find(id);
+            if (hero == null)
+            {
+                return HttpNotFound();
+            }
+            return View(hero);
+        }
+        
+       /* public ActionResult Test(StrCl s)
         {
             
-            lst.Add("1", "sting1");
-            lst.Add("2", "sting2");
-            lst.Add("3", "sting3");
+            
             //List<ApplicationUser> users = db.Users.ToList
            /* Hero hero = new Hero();
             hero.Attack = 5;
@@ -156,9 +180,9 @@ namespace Game.Controllers
             hero.Name = "sssssss";
             hero.UserId = "21167d23-98da-489f-8d91-6db06370cb41";
             db.Heroes.Add(hero);
-            db.SaveChanges();*/
+            db.SaveChanges();
             return Json(lst.Where(n=>n.Key == s.St), JsonRequestBehavior.AllowGet);
-        }
+        }*/
 
         protected override void Dispose(bool disposing)
         {

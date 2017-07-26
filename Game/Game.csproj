@@ -331,6 +331,8 @@
     <Content Include="Views\Heroes\Edit.cshtml" />
     <Content Include="Views\Heroes\Index.cshtml" />
     <Content Include="Views\Heroes\NotUsersView.cshtml" />
+    <Content Include="Views\Heroes\ForbidDelete.cshtml" />
+    <Content Include="Views\Heroes\Characteristic.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -79,7 +79,7 @@ namespace Game.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToLocal("/Heroes/Index");
+                    return RedirectToLocal("Heroes/Index");
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
@@ -166,7 +166,7 @@ namespace Game.Controllers
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Heroes");
                 }
                 AddErrors(result);
             }
@@ -395,7 +395,7 @@ namespace Game.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Heroes");
         }
 
         //
@@ -452,7 +452,7 @@ namespace Game.Controllers
             {
                 return Redirect(returnUrl);
             }
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Heroes");
         }
 
         internal class ChallengeResult : HttpUnauthorizedResult

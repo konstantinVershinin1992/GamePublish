@@ -92,12 +92,11 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Picture)
+            <img src="@Url.Content(Model.Picture)" height="50px" width="60px">
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Редактировать", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Назад к списку", "Index")
 </p>

@@ -12,7 +12,7 @@
                 title: $(this).attr("data-dialog-title"),
                 close: function () { $(this).remove() },
                 modal: true,
-                width: "auto"                
+                width: "45%"                
             })
             
    dialogview.load(this.href);
