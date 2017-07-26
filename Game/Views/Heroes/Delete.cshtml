@@ -93,17 +93,17 @@
         </dt>
 
         <dd>
-            <img src="@Url.Content(Model.Picture)" height="50px" width="60px">
-        </dd>
+           <img src="@Url.Content(Model.Picture)" height="50px" width="60px">
+            </dd>
 
-    </dl>
+        </dl>
 
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
+        @using (Html.BeginForm()) {
+            @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Удалить" class="btn btn-default" /> |
-            @Html.ActionLink("Назад к списку", "Index")
-        </div>
-    }
-</div>
+            <div class="form-actions no-color">
+                <input type="submit" value="Удалить" class="btn btn-default" /> |
+                @Html.ActionLink("Назад к списку", "Index")
+            </div>
+        }
+    </div>

@@ -21,13 +21,12 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Picture, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Picture, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Picture, "", new { @class = "text-danger" })
-            </div>
+            <input accept="image/jpeg,image/gif,image/x-png" type="file" name="file" id="file" value="загрузить" style="display: block" />
+
+            <img src="@Url.Content(Model.Picture)"id="picBoxEdit" height="60">
         </div>
 
+        @*
         <div class="form-group">
             @Html.LabelFor(model => model.UserId, "UserId", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -35,7 +34,7 @@
                 @Html.ValidationMessageFor(model => model.UserId, "", new { @class = "text-danger" })
             </div>
         </div>
-
+        *@
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Сохранить" class="btn btn-default" />

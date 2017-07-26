@@ -26,7 +26,7 @@ namespace Game.Controllers
             bool isAuthenticated = User.Identity.IsAuthenticated;
             if (isAuthenticated)
             {
-                var heroes = db.Heroes.Include(h => h.User);              
+                var heroes = db.Heroes.Include(h => h.User);       
                 return View(heroes.ToList());
             }            
             return View("NotUsersView");
@@ -64,14 +64,15 @@ namespace Game.Controllers
         {
             if (ModelState.IsValid)
             {
-                string fileName = Path.GetFileName(file.FileName);
-                string physicalPath= Server.MapPath("/UploadContent");
-                file.SaveAs( Path.Combine(physicalPath,fileName));
-
+                if (file != null)
+                {
+                    string fileName = Path.GetFileName(file.FileName);
+                    string physicalPath = Server.MapPath("/UploadContent");
+                    file.SaveAs(Path.Combine(physicalPath, fileName));
+                    hero.Picture = Path.Combine("~/UploadContent", fileName);
+                }
                 string currentUserId = User.Identity.GetUserId();
-
-                hero.UserId = currentUserId;
-                hero.Picture = Path.Combine("~/UploadContent",fileName);
+                hero.UserId = currentUserId;                
                 hero.FreePoints = 50;
                 hero.Health = 200;
                 hero.Protection = 5;
@@ -109,10 +110,17 @@ namespace Game.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Level,FreePoints,Experience,Health,Protection,Attack,Evasion,Crit,Picture,UserId")] Hero hero)
+        public ActionResult Edit([Bind(Include = "Id,Name,Level,FreePoints,Experience,Health,Protection,Attack,Evasion,Crit,Picture,UserId")] Hero hero, HttpPostedFileBase file)
         {
             if (ModelState.IsValid)
             {
+                if (file != null)
+                { 
+                    string fileName = Path.GetFileName(file.FileName);
+                    string physicalPath = Server.MapPath("/UploadContent");
+                    file.SaveAs(Path.Combine(physicalPath, fileName));
+                    hero.Picture = Path.Combine("~/UploadContent", fileName);
+                }
                 db.Entry(hero).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
