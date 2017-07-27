@@ -96,7 +96,7 @@ namespace Game.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Hero hero = db.Heroes.Find(id);
+            Hero hero = db.Heroes.Include(x=>x.User).FirstOrDefault(n=>n.Id == id);
             if (hero == null)
             {
                 return HttpNotFound();
@@ -110,18 +110,21 @@ namespace Game.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Level,FreePoints,Experience,Health,Protection,Attack,Evasion,Crit,Picture,UserId")] Hero hero, HttpPostedFileBase file)
+        public ActionResult Edit(Hero hero, HttpPostedFileBase file)
         {
             if (ModelState.IsValid)
             {
+                Hero heroEdit = db.Heroes.Find(hero.Id);
                 if (file != null)
                 { 
+
                     string fileName = Path.GetFileName(file.FileName);
                     string physicalPath = Server.MapPath("/UploadContent");
                     file.SaveAs(Path.Combine(physicalPath, fileName));
-                    hero.Picture = Path.Combine("~/UploadContent", fileName);
+                    heroEdit.Picture = Path.Combine("~/UploadContent", fileName);
                 }
-                db.Entry(hero).State = EntityState.Modified;
+                //db.Entry(hero).State = EntityState.Modified;
+                UpdateModel(heroEdit);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -132,7 +135,7 @@ namespace Game.Controllers
         // GET: Heroes/Delete/5
         public ActionResult Delete(int? id)
         {                
-            if (id == null)
+            if (id == null) 
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
