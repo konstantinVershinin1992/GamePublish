@@ -3,7 +3,7 @@
 @{
     ViewBag.Title = "Edit";
 }
-@using (Html.BeginForm())
+@using (Html.BeginForm("Edit", "Heroes", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     
