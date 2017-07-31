@@ -117,7 +117,6 @@ namespace Game.Controllers
                 Hero heroEdit = db.Heroes.Find(hero.Id);
                 if (file != null)
                 { 
-
                     string fileName = Path.GetFileName(file.FileName);
                     string physicalPath = Server.MapPath("/UploadContent");
                     file.SaveAs(Path.Combine(physicalPath, fileName));
