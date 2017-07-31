@@ -85,7 +85,7 @@
             @Html.DisplayFor(modelItem => item.Crit)
         </td>
         <td>           
-               <img src="@Url.Content(item.Picture)" height ="50px" width="60px">
+               <img src="@Url.Content(item.Picture)" style="max-height:50px;max-height:50px;">
         </td>
         <td>
             @Html.ActionLink("Редактировать", "Edit", new { id=item.Id },new { @class= "viewDialog" }) |
