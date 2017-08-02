@@ -3,5 +3,17 @@
     ViewBag.Title = "Характеристики";
 }
 
+
 <h2>Характеристики персонажа</h2>
+@using (Html.BeginForm("Characteristic", "Heroes", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+
+    <div class="characteristicsData" id="characteristic">
+       <div id="health">
+           @Html.DisplayFor(n=>n.Health);
+        </div>
+    </div>
+    @Html.AntiForgeryToken()
+
+}
 
