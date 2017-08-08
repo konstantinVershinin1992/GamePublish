@@ -13,6 +13,21 @@
     
 </p>
 
+<div id="wrap" style="display: block;">
+    <div id="showcase" class="noselect"> 
+        @foreach (var item in Model)
+        {
+            <img class="cloud9-item" src=@Url.Content(@item.Picture) alt="@item.Name"> 
+        }
+
+    </div>
+    <p id="item-title">&nbsp;</p>
+    <div class="nav" class="noselect">
+        <button class="left">  ← </button>
+        <button class="right"> → </button>
+    </div>
+</div>
+
 <table class="table">
     <tr>
         <th>
@@ -99,7 +114,66 @@
 }
 
 </table>
+
+@Styles.Render("~/Content/slider.css")
+
 <script src="~/Scripts/jquery-1.12.4.min.js" type="text/javascript"></script>
 <script src="~/Scripts/jquery-ui-1.12.1.js" type="text/javascript"></script>
 <script src="~/Scripts/Custom/ModalView.js" type="text/javascript"></script>
+<script src="~/Scripts/jquery.reflection.js" type="text/javascript"></script>
+<script src="~/Scripts/jquery.cloud9carousel.js" type="text/javascript"></script>
+<script>
+    $(function () {
+        var showcase = $("#showcase")
 
+        showcase.Cloud9Carousel({
+            yPos: 42,
+            yRadius: 48,
+            mirrorOptions: {
+                gap: 12,
+                height: 0.2
+            },
+            buttonLeft: $(".nav > .left"),
+            buttonRight: $(".nav > .right"),
+            autoPlay: true,
+            bringToFront: true,
+            onRendered: showcaseUpdated,
+            onLoaded: function () {
+                showcase.css('visibility', 'visible')
+                showcase.css('display', 'none')
+                showcase.fadeIn(1500)
+            }
+        })
+
+        function showcaseUpdated(showcase) {
+            var title = $('#item-title').html(
+                $(showcase.nearestItem()).attr('alt')
+            )
+
+            var c = Math.cos((showcase.floatIndex() % 1) * 2 * Math.PI)
+            title.css('opacity', 0.5 + (0.5 * c))
+        }
+
+        // Simulate physical button click effect
+        $('.nav > button').click(function (e) {
+            var b = $(e.target).addClass('down')
+            setTimeout(function () { b.removeClass('down') }, 80)
+        })
+
+        $(document).keydown(function (e) {
+            //
+            // More codes: http://www.javascripter.net/faq/keycodes.htm
+            //
+            switch (e.keyCode) {
+                /* left arrow */
+                case 37:
+                    $('.nav > .left').click()
+                    break
+
+                /* right arrow */
+                case 39:
+                    $('.nav > .right').click()
+            }
+        })
+    })
+</script> 
