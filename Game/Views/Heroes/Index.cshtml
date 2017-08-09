@@ -17,11 +17,14 @@
     <div id="showcase" class="noselect"> 
         @foreach (var item in Model)
         {
-            <img class="cloud9-item" src=@Url.Content(@item.Picture) alt="@item.Name"> 
+            <div class="cloud9-item">
+                <span class="hero-title">@item.Name - Уровень @item.Level</span>
+                <img src=@Url.Content(@item.Picture) alt="@item.Name"> 
+            </div>
         }
 
     </div>
-    <p id="item-title">&nbsp;</p>
+    
     <div class="nav" class="noselect">
         <button class="left">  ← </button>
         <button class="right"> → </button>
@@ -135,7 +138,7 @@
             },
             buttonLeft: $(".nav > .left"),
             buttonRight: $(".nav > .right"),
-            autoPlay: true,
+            autoPlay: false,
             bringToFront: true,
             onRendered: showcaseUpdated,
             onLoaded: function () {

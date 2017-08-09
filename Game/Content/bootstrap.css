@@ -6814,3 +6814,11 @@ td.visible-print {
     display: none !important;
   }
 }
+
+.hero-title {
+    display: block;
+    color: white;
+    text-align: center;
+    font-size: 30px;
+}
+    
