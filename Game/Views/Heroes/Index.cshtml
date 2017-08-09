@@ -19,6 +19,14 @@
         {
             <div class="cloud9-item">
                 <span class="hero-title">@item.Name - Уровень @item.Level</span>
+                <div class="hero-info-container">
+                    <span class="characteristic-item" style="text-align: center; font-weight: bold;">Характеристики</span>
+                    <span class="characteristic-item">Атака: @item.Attack</span>
+                    <span class="characteristic-item">Здоровье: @item.Health</span>
+                    <span class="characteristic-item">Защита: @item.Protection</span>
+                    <span class="characteristic-item">Уворот: @item.Evasion%</span>
+                    <span class="characteristic-item">Крит: @item.Crit%</span>
+                </div>
                 <img src=@Url.Content(@item.Picture) alt="@item.Name"> 
             </div>
         }
