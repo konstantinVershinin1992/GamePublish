@@ -18,7 +18,7 @@
         @foreach (var item in Model)
         {
             <div class="cloud9-item">
-                <span class="hero-title">@item.Name - Уровень @item.Level</span>
+                <h2 class="hero-title">@item.Name - Уровень @item.Level</h2>
                 <div class="hero-info-container">
                     <span class="characteristic-item" style="text-align: center; font-weight: bold;">Характеристики</span>
                     <span class="characteristic-item">Атака: @item.Attack</span>
@@ -27,8 +27,8 @@
                     <span class="characteristic-item">Уворот: @item.Evasion%</span>
                     <span class="characteristic-item">Крит: @item.Crit%</span>
                 </div>
-                <img src=@Url.Content(@item.Picture) alt="@item.Name"> 
-            </div>
+                <img src=@Url.Content(@item.Picture) alt="@item.Name">
+                </div>
         }
 
     </div>
@@ -40,91 +40,91 @@
 </div>
 
 <table class="table">
-    <tr>
-        <th>
-            
-            @Html.DisplayNameFor(model => model.User.Email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Level)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FreePoints)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Experience)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Health)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Protection)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Attack)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Evasion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Crit)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Picture)
-        </th>
-        <th></th>
-    </tr>
+        <tr>
+            <th>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.User.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Level)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FreePoints)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Experience)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Health)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Protection)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Attack)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Evasion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Crit)
-        </td>
-        <td>           
-               <img src="@Url.Content(item.Picture)" style="max-height:50px;max-height:50px;">
-        </td>
-        <td>
-            @Html.ActionLink("Редактировать", "Edit", new { id=item.Id },new { @class= "viewDialog" }) |
-            @Html.ActionLink("Просмотреть", "Details", new { id = item.Id }, new { @class = "viewDialog" }) |
-            @Html.ActionLink("Удалить", "Delete", new { id=item.Id }, new { @class = "viewDialog" })|
-            @Html.ActionLink("Характеристики", "Characteristic", new { id = item.Id })|
-            
-        </td>
-    </tr>
-    
-}
+                @Html.DisplayNameFor(model => model.User.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Level)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FreePoints)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Experience)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Health)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Protection)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Attack)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Evasion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Crit)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Picture)
+            </th>
+            <th></th>
+        </tr>
 
-</table>
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Level)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FreePoints)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Experience)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Health)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Protection)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Attack)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Evasion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Crit)
+            </td>
+            <td>
+                   <img src="@Url.Content(item.Picture)" style="max-height:50px;max-height:50px;">
+            </td>
+            <td>
+                @Html.ActionLink("Редактировать", "Edit", new { id=item.Id },new { @class= "viewDialog" }) |
+                @Html.ActionLink("Просмотреть", "Details", new { id = item.Id }, new { @class = "viewDialog" }) |
+                @Html.ActionLink("Удалить", "Delete", new { id=item.Id }, new { @class = "viewDialog" })|
+                @Html.ActionLink("Характеристики", "Characteristic", new { id = item.Id })|
+
+            </td>
+        </tr>
+
+    }
+
+    </table>
 
 @Styles.Render("~/Content/slider.css")
 
@@ -157,12 +157,16 @@
         })
 
         function showcaseUpdated(showcase) {
-            var title = $('#item-title').html(
-                $(showcase.nearestItem()).attr('alt')
+           
+            /*alert($(showcase.nearestItem()).find('h2').text);
+            $(showcase.nearestItem()).find('.hero-title').toggleClass('hidden')*/
+            /*var title = $('#item-title').html(
+                $(showcase.nearestItem()).attr('alt'
+                
             )
 
             var c = Math.cos((showcase.floatIndex() % 1) * 2 * Math.PI)
-            title.css('opacity', 0.5 + (0.5 * c))
+            title.css('opacity', 0.5 + (0.5 * c)))*/
         }
 
         // Simulate physical button click effect
