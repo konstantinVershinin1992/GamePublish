@@ -55,3 +55,6 @@ textarea {
     display: block;
     color: white;
 }
+#characteristicsInner{
+    display:inline-block
+}

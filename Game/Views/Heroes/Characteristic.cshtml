@@ -8,12 +8,45 @@
 @using (Html.BeginForm("Characteristic", "Heroes", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
 
-    <div class="characteristicsData" id="characteristic">
-       <div id="health">
-           @Html.DisplayFor(n=>n.Health);
+   
+    <div id="health">
+        @Html.TextBoxFor(n=>n.FreePoints, new { @class = "form-control characteristicsInner", @id ="freePointsInput"});
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Health, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Health, new { @class = "form-control characteristicsInner", @id="healthInput" })
+            <input type="button" value="+" class="plusButton" id="buttonPlusHealth">
+            <input type="button" value="-" class="minusButton" id="buttonMinusHealth">
+        </div>
+        @Html.LabelFor(m => m.Protection, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Protection, new { @class = "form-control" , @id="protectionInput"})
+            <input type="button" value="+" class="plusButton" id="buttonPlusProtection">
+            <input type="button" value="-" class="minusButton" id="buttonMinusProtection">
+        </div>
+        @Html.LabelFor(m => m.Attack, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Attack, new { @class = "form-control" , @id="attackInput"})
+            <input type="button" value="+" class="plusButton" id="buttonPlusAttack">
+            <input type="button" value="-" class="minusButton" id="buttonMinusAttack">
+        </div>
+        @Html.LabelFor(m => m.Evasion, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Evasion, new { @class = "form-control", @id="evasionInput" })
+            <input type="button" value="+" class="plusButton" id="buttonPlusEvasion">
+            <input type="button" value="-" class="minusButton" id="buttonMinusEvasion">
+        </div>
+        @Html.LabelFor(m => m.Crit, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Crit, new { @class = "form-control", @id="critInput" })
+            <input type="button" value="+" class="plusButton" id="buttonPlusCrit">
+            <input type="button" value="-" class="minusButton" id="buttonMinusCrit">
         </div>
     </div>
+
     @Html.AntiForgeryToken()
 
 }
 
+<script src="~/Scripts/Custom/Characteristics.js"></script>
