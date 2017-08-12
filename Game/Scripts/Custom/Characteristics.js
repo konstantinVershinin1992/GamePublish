@@ -39,12 +39,12 @@ function ButtonSave(e) {
     window.location.href = url;
 }
 function Reset(e) {
-    freePoints.defaultValue = defaultState.FreePoints;
-    health.defaultValue = defaultState.Health;
-    protection.defaultValue = defaultState.Protection;
-    attack.defaultValue = defaultState.Attack;
-    evasion.defaultValue = defaultState.Evasion;
-    crit.defaultValue = defaultState.Crit;
+    inputs.freePoints.defaultValue = defaultState.FreePoints;
+    inputs.health.defaultValue = defaultState.Health;
+    inputs.protection.defaultValue = defaultState.Protection;
+    inputs.attack.defaultValue = defaultState.Attack;
+    inputs.evasion.defaultValue = defaultState.Evasion;
+    inputs.crit.defaultValue = defaultState.Crit;
 }
 function ButtonsPlus(e) {
     if (inputs.freePoints.defaultValue == "0")
