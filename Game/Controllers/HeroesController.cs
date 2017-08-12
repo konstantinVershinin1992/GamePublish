@@ -109,7 +109,7 @@ namespace Game.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
+    //    [ValidateAntiForgeryToken]
         public ActionResult Edit(Hero hero, HttpPostedFileBase file)
         {
             if (ModelState.IsValid)
@@ -161,7 +161,7 @@ namespace Game.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-        public ActionResult Characteristic(int id)
+        public ActionResult Characteristic(int? id)
         {
             if (id == null)
             {
@@ -174,7 +174,18 @@ namespace Game.Controllers
             }
             return View(hero);
         }
+   //     [HttpPost]
         
+        public void CharacteristicSave(Hero hero)
+        {
+            Hero heroEdit = db.Heroes.Find(hero.Id);
+            if (ModelState.IsValid)
+            {
+                UpdateModel(heroEdit);
+                db.SaveChanges();
+            }
+        }
+
        /* public ActionResult Test(StrCl s)
         {
             
@@ -207,5 +218,6 @@ namespace Game.Controllers
     {
         public string St { get; set; }
         public int Lk { get; set; }
+        public int FreePoints { get; set; }
     }
 }

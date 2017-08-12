@@ -117,7 +117,7 @@
                 @Html.ActionLink("Редактировать", "Edit", new { id=item.Id },new { @class= "viewDialog" }) |
                 @Html.ActionLink("Просмотреть", "Details", new { id = item.Id }, new { @class = "viewDialog" }) |
                 @Html.ActionLink("Удалить", "Delete", new { id=item.Id }, new { @class = "viewDialog" })|
-                @Html.ActionLink("Характеристики", "Characteristic", new { id = item.Id })|
+                @Html.ActionLink("Характеристики", "Characteristic", new { id = item.Id }/*, new { @class = "viewDialog" }*/)|
 
             </td>
         </tr>

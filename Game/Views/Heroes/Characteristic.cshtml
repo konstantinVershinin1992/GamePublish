@@ -7,46 +7,73 @@
 <h2>Характеристики персонажа</h2>
 @using (Html.BeginForm("Characteristic", "Heroes", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
+    <div hidden="hidden">
+        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control myclass" } })
+        @Html.EditorFor(model => model.Id, new { htmlAttributes = new { @class = "form-control myclass" } })
+    </div>
 
-   
-    <div id="health">
-        @Html.TextBoxFor(n=>n.FreePoints, new { @class = "form-control characteristicsInner", @id ="freePointsInput"});
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Health, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Health, new { @class = "form-control characteristicsInner", @id="healthInput" })
-            <input type="button" value="+" class="plusButton" id="buttonPlusHealth">
-            <input type="button" value="-" class="minusButton" id="buttonMinusHealth">
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+        <div class="form-group">
+            @Html.LabelFor(model => model.FreePoints, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(n => n.FreePoints, new { @class = "form-control characteristicsInner" });
+            </div>
         </div>
-        @Html.LabelFor(m => m.Protection, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Protection, new { @class = "form-control" , @id="protectionInput"})
-            <input type="button" value="+" class="plusButton" id="buttonPlusProtection">
-            <input type="button" value="-" class="minusButton" id="buttonMinusProtection">
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Health, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.EditorFor(m => m.Health, new { @class = "form-control" })
+                <input type="button" value="+" class="plusButton" id="buttonPlusHealth">
+                <input type="button" value="-" class="minusButton" id="buttonMinusHealth">
+            </div>
         </div>
-        @Html.LabelFor(m => m.Attack, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Attack, new { @class = "form-control" , @id="attackInput"})
-            <input type="button" value="+" class="plusButton" id="buttonPlusAttack">
-            <input type="button" value="-" class="minusButton" id="buttonMinusAttack">
+        <div class="form-group">
+            @Html.LabelFor(m => m.Protection, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.EditorFor(m => m.Protection, new { @class = "form-control someclass"})
+                <input type="button" value="+" class="plusButton" id="buttonPlusProtection">
+                <input type="button" value="-" class="minusButton" id="buttonMinusProtection">
+            </div>
         </div>
-        @Html.LabelFor(m => m.Evasion, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Evasion, new { @class = "form-control", @id="evasionInput" })
-            <input type="button" value="+" class="plusButton" id="buttonPlusEvasion">
-            <input type="button" value="-" class="minusButton" id="buttonMinusEvasion">
+        <div class="form-group">
+            @Html.LabelFor(m => m.Attack, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.EditorFor(m => m.Attack, new { @class = "form-control" })
+                <input type="button" value="+" class="plusButton" id="buttonPlusAttack">
+                <input type="button" value="-" class="minusButton" id="buttonMinusAttack">
+            </div>
         </div>
-        @Html.LabelFor(m => m.Crit, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Crit, new { @class = "form-control", @id="critInput" })
-            <input type="button" value="+" class="plusButton" id="buttonPlusCrit">
-            <input type="button" value="-" class="minusButton" id="buttonMinusCrit">
+        <div class="form-group">
+            @Html.LabelFor(m => m.Evasion, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.EditorFor(m => m.Evasion, new { @class = "form-control" })
+                <input type="button" value="+" class="plusButton" id="buttonPlusEvasion">
+                <input type="button" value="-" class="minusButton" id="buttonMinusEvasion">
+            </div>
         </div>
-    </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Crit, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.EditorFor(m => m.Crit, new { @class = "form-control",  @disabled = "disabled" })
+                <input type="button" value="+" class="plusButton" id="buttonPlusCrit">
+                <input type="button" value="-" class="minusButton" id="buttonMinusCrit">
+            </div>
+         </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">                   
+                    <input type="button" value="Cохранить" class="btn btn-default" id="characteristicsSave" />
+                    <input type="button" value="Сбросить" class="btn btn-default" id="characteristicsReset" />                    
+                </div>
+            </div>
+
+        </div>
 
     @Html.AntiForgeryToken()
 
 }
-
+<script src="~/Scripts/jquery-1.12.4.js"></script>
 <script src="~/Scripts/Custom/Characteristics.js"></script>
