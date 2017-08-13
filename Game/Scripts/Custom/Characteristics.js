@@ -3,7 +3,12 @@ var minusButtons = document.getElementsByClassName("minusButton");
 var resetButton = document.getElementById("characteristicsReset");
 var saveButton = document.getElementById("characteristicsSave");
 var defaultState =  {Id:0, Name:"",FreePoints: 0, Health: 0, Protection: 0, Attack: 0, Evasion: 0, Crit: 0 };
-var inputs = { id:null, name:null, freePoints:null, health:null, protection:null, attack:null, evasion:null, crit:null };
+var inputs = { id: null, name: null, freePoints: null, health: null, protection: null, attack: null, evasion: null, crit: null };
+var coefHealth = 5;
+var coefProtection = 2;
+var coefAttack = 2;
+var coefEvasion = 2;
+var coefCrit = 2;
 SetInputs();
 SetValues();
 SevReadOnly();
@@ -54,19 +59,19 @@ function ButtonsPlus(e) {
     switch(target)
     {
         case "buttonPlusHealth":
-            inputs.health.defaultValue = +inputs.health.defaultValue + 5;
+            inputs.health.defaultValue = +inputs.health.defaultValue + coefHealth;
             break;
         case "buttonPlusProtection":
-            inputs.protection.defaultValue = +inputs.protection.defaultValue + 2;
+            inputs.protection.defaultValue = +inputs.protection.defaultValue + coefProtection;
             break;
         case "buttonPlusAttack":
-            inputs.attack.defaultValue = +inputs.attack.defaultValue + 2;
+            inputs.attack.defaultValue = +inputs.attack.defaultValue + coefAttack;
             break;
         case "buttonPlusEvasion":
-            inputs.evasion.defaultValue = +inputs.evasion.defaultValue + 2;
+            inputs.evasion.defaultValue = +inputs.evasion.defaultValue + coefEvasion;
             break;
         case "buttonPlusCrit":
-            inputs.crit.defaultValue = +inputs.crit.defaultValue + 2;
+            inputs.crit.defaultValue = +inputs.crit.defaultValue + coefCrit;
             break;
     }
 }
@@ -78,19 +83,19 @@ function ButtonsMinus(e) {
     inputs.freePoints.defaultValue = +inputs.freePoints.defaultValue + 1;
     switch (target) {
         case "buttonMinusHealth":
-            inputs.health.defaultValue = +inputs.health.defaultValue - 5;
+            inputs.health.defaultValue = +inputs.health.defaultValue - coefHealth;
             break;
         case "buttonMinusProtection":
-            inputs.protection.defaultValue = +inputs.protection.defaultValue - 2;
+            inputs.protection.defaultValue = +inputs.protection.defaultValue - coefProtection;
             break;
         case "buttonMinusAttack":
-            inputs.attack.defaultValue = +inputs.attack.defaultValue - 2;
+            inputs.attack.defaultValue = +inputs.attack.defaultValue - coefAttack;
             break;
         case "buttonMinusEvasion":
-            inputs.evasion.defaultValue = +inputs.evasion.defaultValue - 2;
+            inputs.evasion.defaultValue = +inputs.evasion.defaultValue - coefEvasion;
             break;
         case "buttonMinusCrit":
-            inputs.crit.defaultValue = +inputs.crit.defaultValue - 2;
+            inputs.crit.defaultValue = +inputs.crit.defaultValue - coefCrit;
             break;
     }
 }

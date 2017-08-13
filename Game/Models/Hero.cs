@@ -14,12 +14,14 @@ namespace Game.Models
         public string Name { get; set; }
         [Display(Name = "Уровень")]
         public int Level { get; set; }
+        [Display(Name = "Очки")]
         public int FreePoints { get; set; }
         public int Experience { get; set; }
         [Display (Name = "Здоровье")]
         public int Health { get; set; }
         [Display(Name = "Защита")]
         public int Protection { get; set; }
+        [Display(Name = "Атака")]
         public int Attack { get; set; }
         public int Evasion { get; set; }
         public int Crit { get; set; }
