@@ -55,9 +55,9 @@ textarea {
     display: block;
     color: white;
 }
-#characteristicsInner{
-    display:inline-block
+#formContent{
+    display:inline-block;
 }
-.pictureContent{
-    display:inline-block
+#pictureContent{
+    display:inline-block;
 }
