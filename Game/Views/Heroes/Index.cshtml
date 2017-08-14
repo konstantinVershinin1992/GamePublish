@@ -34,12 +34,12 @@
     </div>
     
     <div class="nav" class="noselect">
-        <button class="left">  ← </button>
-        <button class="right"> → </button>
+        <span class="left"></span>
+        <span class="right"></span>
     </div>
 </div>
 
-<table class="table">
+<table class="table" style="margin-top: 50px;">
         <tr>
             <th>
 
@@ -157,16 +157,13 @@
         })
 
         function showcaseUpdated(showcase) {
-           
-            /*alert($(showcase.nearestItem()).find('h2').text);
-            $(showcase.nearestItem()).find('.hero-title').toggleClass('hidden')*/
-            /*var title = $('#item-title').html(
-                $(showcase.nearestItem()).attr('alt'
-                
-            )
+ 
+            showcase.items.forEach(function (item, i, arr) {
+                item.element.setAttribute("class","cloud9-item");
+            });
+            var selectedItem = $(showcase.nearestItem())[0].element;
+            selectedItem.setAttribute("class", "cloud9-item selectedItem");
 
-            var c = Math.cos((showcase.floatIndex() % 1) * 2 * Math.PI)
-            title.css('opacity', 0.5 + (0.5 * c)))*/
         }
 
         // Simulate physical button click effect
