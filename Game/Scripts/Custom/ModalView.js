@@ -16,12 +16,11 @@
             })
             
    dialogview.load(this.href);
-   dialogview[0].style.width = "90%";
-   dialogview[0].top = "50px";
-   dialogview[0].clientLeft = "60px";
-   dialogview[0].cssText ="width: auto; min-height: 500px; max-height: none; height: 700px;"
+   //dialogview[0].setAttribute("opacity","0.3");
+  
     });
 });
+
 /* window.onload = function () {
     var button = document.getElementById("bt").onclick = function () {
         

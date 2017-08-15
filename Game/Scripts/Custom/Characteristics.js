@@ -4,11 +4,19 @@ var resetButton = document.getElementById("characteristicsReset");
 var saveButton = document.getElementById("characteristicsSave");
 var defaultState =  {Id:0, Name:"",FreePoints: 0, Health: 0, Protection: 0, Attack: 0, Evasion: 0, Crit: 0 };
 var inputs = { id: null, name: null, freePoints: null, health: null, protection: null, attack: null, evasion: null, crit: null };
+
 var coefHealth = 5;
 var coefProtection = 2;
 var coefAttack = 2;
 var coefEvasion = 2;
 var coefCrit = 2;
+
+var notMoreHealth = 280;
+var notMoreProtection = 70;
+var notMoreAttack = 70;
+var notMoreEvasion = 10;
+var notMoreCrit = 10;
+
 SetInputs();
 SetValues();
 SevReadOnly();
@@ -55,24 +63,29 @@ function ButtonsPlus(e) {
     if (inputs.freePoints.defaultValue == "0")
         return;
     var target = e.currentTarget.id
-    inputs.freePoints.defaultValue -= 1;
     switch(target)
     {
         case "buttonPlusHealth":
-            inputs.health.defaultValue = +inputs.health.defaultValue + coefHealth;
+            plusCalculate(inputs.health, notMoreHealth, coefHealth)
             break;
         case "buttonPlusProtection":
-            inputs.protection.defaultValue = +inputs.protection.defaultValue + coefProtection;
+            plusCalculate(inputs.protection, notMoreProtection, coefProtection)
             break;
         case "buttonPlusAttack":
-            inputs.attack.defaultValue = +inputs.attack.defaultValue + coefAttack;
+            plusCalculate(inputs.attack, notMoreAttack, coefAttack);
             break;
         case "buttonPlusEvasion":
-            inputs.evasion.defaultValue = +inputs.evasion.defaultValue + coefEvasion;
+            plusCalculate(inputs.evasion, notMoreEvasion, coefEvasion);
             break;
         case "buttonPlusCrit":
-            inputs.crit.defaultValue = +inputs.crit.defaultValue + coefCrit;
+            plusCalculate(inputs.crit, notMoreCrit, coefCrit);
             break;
+    }
+}
+function plusCalculate(inputValue, notMore, coef) {
+    if (!(+inputValue.defaultValue == +notMore)) {
+        inputValue.defaultValue = +inputValue.defaultValue + coef;
+        inputs.freePoints.defaultValue  -= 1;
     }
 }
 function ButtonsMinus(e) {
@@ -80,24 +93,29 @@ function ButtonsMinus(e) {
     var target = e.currentTarget.id
     if (+inputs.freePoints.defaultValue >= defaultState.FreePoints)
         return;
-    inputs.freePoints.defaultValue = +inputs.freePoints.defaultValue + 1;
     switch (target) {
         case "buttonMinusHealth":
-            inputs.health.defaultValue = +inputs.health.defaultValue - coefHealth;
+            minusCalculate(inputs.health,defaultState.Health,coefHealth)
             break;
         case "buttonMinusProtection":
-            inputs.protection.defaultValue = +inputs.protection.defaultValue - coefProtection;
+            minusCalculate(inputs.protection, defaultState.Protection, coefProtection);
             break;
         case "buttonMinusAttack":
-            inputs.attack.defaultValue = +inputs.attack.defaultValue - coefAttack;
+            minusCalculate(inputs.attack, defaultState.Attack, coefAttack)
             break;
         case "buttonMinusEvasion":
-            inputs.evasion.defaultValue = +inputs.evasion.defaultValue - coefEvasion;
+            minusCalculate(inputs.evasion, defaultState.Evasion, coefEvasion)
             break;
         case "buttonMinusCrit":
-            inputs.crit.defaultValue = +inputs.crit.defaultValue - coefCrit;
+            minusCalculate(inputs.crit, defaultState.Crit, coefCrit)
             break;
     }
+}
+function minusCalculate(inputValue, defaultStateValues, coef) {
+  if(!(+inputValue.defaultValue == +defaultStateValues)){
+        inputValue.defaultValue = +inputValue.defaultValue - coef;
+        inputs.freePoints.defaultValue = +inputs.freePoints.defaultValue+1;
+   }
 }
 function SetInputs() {
     inputs.id = document.getElementById("Id");
