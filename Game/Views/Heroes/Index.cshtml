@@ -15,11 +15,9 @@
         </li>
         <li>
             <input type="button" id="characteristicButton" value="Характеристики" />
-            @Html.ActionLink("Характеристики", "Characteristic", new { id = heroId })
         </li>
         <li>
-            <input type="button" id="deleteButton" value="Delete" />
-            @Html.ActionLink("Удалить", "Delete", new { id = heroId }, new { @class = "viewDialog" })
+            <input type="button" id="deleteButton" value="Удалить" />
         </li>
 
     </ul>
@@ -57,7 +55,7 @@
     </div>
 </div>
 
-<table class="table" style="margin-top: 50px;">
+@*<table class="table" style="margin-top: 50px;">
         <tr>
             <th>
 
@@ -142,7 +140,7 @@
 
     }
 
-    </table>
+    </table>*@
 
 @Styles.Render("~/Content/slider.css")
 
@@ -207,11 +205,20 @@
         })
     })
 
-    $("#checkButton").click(GetHeroId);
+    $("#characteristicButton").click(openCharacteristics);
+    $("#deleteButton").click(deleteHero);
 
-    function GetHeroId()
-    {
-        alert($(".selectedItem").find('input').val());
+    function openCharacteristics() {
+        var heroId = getHeroId();
+        window.open("/Heroes/Characteristic/" + heroId, "_self");
     }
 
+    function deleteHero() {
+        var heroId = getHeroId();
+        window.open("/Heroes/Delete/" + heroId, "_self");
+    }
+
+    function getHeroId() {
+        return $(".selectedItem").find('input').val();
+    }
 </script> 
