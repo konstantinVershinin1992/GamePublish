@@ -11986,7 +11986,10 @@ $.widget( "ui.dialog", {
 			at: "center",
 			of: window,
 			collision: "fit",
-
+			/*using: function( pos ) {
+			    $(this).css("top", "100px");
+			    $(this).css("left", "50%");
+			}*/
 			// Ensure the titlebar is always visible
 			using: function( pos ) {
 				var topOffset = $( this ).css( pos ).offset().top;
