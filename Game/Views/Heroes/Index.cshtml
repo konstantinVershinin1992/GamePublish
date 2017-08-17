@@ -2,14 +2,31 @@
 
 @{
     ViewBag.Title = "Список персонажей";
-    //Layout = null;
+    var heroId = 3;
 }
 
-<h2>Персонажи</h2>
+<link href='@Url.Content("~/Content/themes/base/jquery-ui.css")' rel="stylesheet" type="text/css" />
 
+<h2>Персонажи</h2>
+<div class="game-menu">
+    <ul>
+        <li>
+            @Html.ActionLink("Создать нового", "Create", new { }, new { @class = "viewDialog", data_dialog_title = "Создание Персонажа" })
+        </li>
+        <li>
+            <input type="button" id="characteristicButton" value="Характеристики" />
+            @Html.ActionLink("Характеристики", "Characteristic", new { id = heroId })
+        </li>
+        <li>
+            <input type="button" id="deleteButton" value="Delete" />
+            @Html.ActionLink("Удалить", "Delete", new { id = heroId }, new { @class = "viewDialog" })
+        </li>
+
+    </ul>
+</div>
 <p>
-    <link href='@Url.Content("~/Content/themes/base/jquery-ui.css")' rel="stylesheet" type="text/css" />
-    @Html.ActionLink("Создать нового", "Create",new { }, new { @class = "viewDialog", data_dialog_title = "Создание Персонажа" })
+    
+    
     
 </p>
 
@@ -20,6 +37,7 @@
             <div class="cloud9-item">
                 <h2 class="hero-title">@item.Name - Уровень @item.Level</h2>
                 <div class="hero-info-container">
+                    <input type="hidden" name="heroId" value="@item.Id"/>
                     <span class="characteristic-item" style="text-align: center; font-weight: bold;">Характеристики</span>
                     <span class="characteristic-item">Атака: @item.Attack</span>
                     <span class="characteristic-item">Здоровье: @item.Health</span>
@@ -33,7 +51,7 @@
 
     </div>
     
-    <div class="nav" class="noselect">
+    <div class="nav">
         <span class="left"></span>
         <span class="right"></span>
     </div>
@@ -157,9 +175,9 @@
         })
 
         function showcaseUpdated(showcase) {
- 
+
             showcase.items.forEach(function (item, i, arr) {
-                item.element.setAttribute("class","cloud9-item");
+                item.element.setAttribute("class", "cloud9-item");
             });
             var selectedItem = $(showcase.nearestItem())[0].element;
             selectedItem.setAttribute("class", "cloud9-item selectedItem");
@@ -182,10 +200,18 @@
                     $('.nav > .left').click()
                     break
 
-                /* right arrow */
+                    /* right arrow */
                 case 39:
                     $('.nav > .right').click()
             }
         })
     })
+
+    $("#checkButton").click(GetHeroId);
+
+    function GetHeroId()
+    {
+        alert($(".selectedItem").find('input').val());
+    }
+
 </script> 

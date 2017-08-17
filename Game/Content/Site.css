@@ -109,3 +109,7 @@ textarea {
     display:inline-block;
 }
 
+.game-menu li {
+    display: inline-block;
+    margin: 0 15px;
+}
