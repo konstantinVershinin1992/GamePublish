@@ -2130,6 +2130,47 @@ fieldset[disabled] .btn-primary.active {
   border-color: #357ebd;
 }
 
+.btn-dark {
+    color: #999;
+    background-color: #02060d;
+    border-color: #999;
+}
+
+    .btn-dark:hover,
+    .btn-dark:focus,
+    .btn-dark:active,
+    .btn-dark.active,
+    .open .dropdown-toggle.btn-dark {
+        color: #fff;
+        background-color: #000;
+        border-color: #fff;
+    }
+
+    .btn-dark:active,
+    .btn-dark.active,
+    .open .dropdown-toggle.btn-dark {
+        background-image: none;
+    }
+
+    .btn-dark.disabled,
+    .btn-dark[disabled],
+    fieldset[disabled] .btn-dark,
+    .btn-dark.disabled:hover,
+    .btn-dark[disabled]:hover,
+    fieldset[disabled] .btn-dark:hover,
+    .btn-dark.disabled:focus,
+    .btn-dark[disabled]:focus,
+    fieldset[disabled] .btn-dark:focus,
+    .btn-dark.disabled:active,
+    .btn-dark[disabled]:active,
+    fieldset[disabled] .btn-dark:active,
+    .btn-dark.disabled.active,
+    .btn-dark[disabled].active,
+    fieldset[disabled] .btn-dark.active {
+        background-color: #428bca;
+        border-color: #357ebd;
+    }
+
 .btn-warning {
   color: #ffffff;
   background-color: #f0ad4e;

@@ -111,5 +111,30 @@ textarea {
 
 .game-menu li {
     display: inline-block;
-    margin: 0 15px;
+    margin: 0 5px;
+}
+
+.lightened {
+    color: yellow;
+}
+
+@-webkit-keyframes yellowPulse {
+    from {
+        -webkit-box-shadow: 0 0 9px #333;
+    }
+
+    50% {
+        -webkit-box-shadow: 0 0 18px #fcff4c;
+        color: #fcff4c;
+    }
+
+    to {
+        -webkit-box-shadow: 0 0 9px #333;
+    }
+}
+
+button.yellow.button {
+    -webkit-animation-name: yellowPulse;
+    -webkit-animation-duration: 3s;
+    -webkit-animation-iteration-count: infinite;
 }

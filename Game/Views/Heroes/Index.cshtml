@@ -14,19 +14,20 @@
             @Html.ActionLink("Создать нового", "Create", new { }, new { @class = "viewDialog", data_dialog_title = "Создание Персонажа" })
         </li>
         <li>
-            <input type="button" id="characteristicButton" value="Характеристики" />
+            <button type="button" id="characteristicButton" class="btn btn-dark yellow button">
+                <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Характеристики
+            </button>
+   
         </li>
         <li>
-            <input type="button" id="deleteButton" value="Удалить" />
+            <button type="button" id="deleteButton" class="btn btn-dark">
+                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Удалить
+            </button>
         </li>
 
     </ul>
 </div>
-<p>
-    
-    
-    
-</p>
+
 
 <div id="wrap" style="display: block;">
     <div id="showcase" class="noselect"> 
@@ -36,6 +37,7 @@
                 <h2 class="hero-title">@item.Name - Уровень @item.Level</h2>
                 <div class="hero-info-container">
                     <input type="hidden" name="heroId" value="@item.Id"/>
+                    <input type="hidden" name="freePoints" value="@item.FreePoints" />
                     <span class="characteristic-item" style="text-align: center; font-weight: bold;">Характеристики</span>
                     <span class="characteristic-item">Атака: @item.Attack</span>
                     <span class="characteristic-item">Здоровье: @item.Health</span>
@@ -180,6 +182,7 @@
             var selectedItem = $(showcase.nearestItem())[0].element;
             selectedItem.setAttribute("class", "cloud9-item selectedItem");
 
+            setPulseToButton();
         }
 
         // Simulate physical button click effect
@@ -219,6 +222,21 @@
     }
 
     function getHeroId() {
-        return $(".selectedItem").find('input').val();
+        return $(".selectedItem").find("input[name='heroId']").val();
+    }
+
+    function countFreePoints() {
+        return $(".selectedItem").find("input[name='freePoints']").val();
+    }
+
+    function setPulseToButton() {
+        var freePoints = countFreePoints();
+        if (freePoints > 0) {
+            $("#characteristicButton").addClass("yellow button");
+        }
+        else {
+            $("#characteristicButton").removeClass("yellow button");
+        }
+           
     }
 </script> 
