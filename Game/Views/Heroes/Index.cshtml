@@ -11,19 +11,24 @@
 <div class="game-menu">
     <ul>
         <li>
-            @Html.ActionLink("Создать нового", "Create", new { }, new { @class = "viewDialog", data_dialog_title = "Создание Персонажа" })
+            <a class='viewDialog btn btn-dark @(!Model.Any() ? "yellow button":"")' data-dialog-title="Создать персонаж" href="/Heroes/Create">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Создать персонаж
+            </a>
         </li>
-        <li>
-            <button type="button" id="characteristicButton" class="btn btn-dark yellow button">
-                <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Характеристики
-            </button>
-   
-        </li>
-        <li>
-            <button type="button" id="deleteButton" class="btn btn-dark">
-                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Удалить
-            </button>
-        </li>
+        @if (Model.Any())
+        {
+            <li>
+                <a class="btn btn-dark yellow button" data-dialog-title="Характеристики" href="/Heroes/Characteristic" id="characteristicButton">
+                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Характеристики
+                </a>
+
+            </li>
+            <li>
+                <a class="viewDialog btn btn-dark" data-dialog-title="Удалить" href="/Heroes/Delete" id="deleteButton">
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Удалить
+                </a>
+            </li>
+        }
 
     </ul>
 </div>
@@ -213,12 +218,12 @@
 
     function openCharacteristics() {
         var heroId = getHeroId();
-        window.open("/Heroes/Characteristic/" + heroId, "_self");
+        $(this).attr("href", "/Heroes/Characteristic/" + heroId);
     }
 
     function deleteHero() {
         var heroId = getHeroId();
-        window.open("/Heroes/Delete/" + heroId, "_self");
+        $(this).attr("href", "/Heroes/Delete/" + heroId);
     }
 
     function getHeroId() {

@@ -133,7 +133,7 @@ textarea {
     }
 }
 
-button.yellow.button {
+a.yellow.button {
     -webkit-animation-name: yellowPulse;
     -webkit-animation-duration: 3s;
     -webkit-animation-iteration-count: infinite;
